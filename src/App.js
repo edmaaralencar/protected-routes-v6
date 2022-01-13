@@ -8,12 +8,23 @@ import Dashboard from './pages/Dashboard';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
+import Users from './pages/Users';
+import Home from './pages/Home';
+
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="*" element={<PrivateRoute />}>
-                    <Route path="*" element={<Dashboard />} />
+                <Route
+                    path="/"
+                    element={
+                        <PrivateRoute>
+                            <Dashboard />
+                        </PrivateRoute>
+                    }
+                >
+                    <Route index element={<Home />} />
+                    <Route path="users" element={<Users />} />
                 </Route>
 
                 <Route path="/sign-in" element={<SignIn />} />
